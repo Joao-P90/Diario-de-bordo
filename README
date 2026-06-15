@@ -48,12 +48,14 @@ Exemplo:
 * Adicionada meta description.
 * Adicionado favicon da aplicação.
 * Utilização do atributo defer no carregamento do arquivo JavaScript.
+* Adição de labels
 
 ### CSS
 
 * Remoção de regras redundantes.
 * Revisão dos estilos para manter apenas os necessários.
 * Utilização de fontes nativas do sistema.
+* Alteração no contraste dos buttons em relação a cor do backgound
 
 ### JavaScript
 
