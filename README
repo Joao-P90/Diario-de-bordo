@@ -30,6 +30,7 @@ Foi realizada uma análise utilizando o Lighthouse para identificar possíveis p
 * Estratégia simples de cache no Service Worker.
 * Presença de regras CSS redundantes.
 * Falta de tratamento de erros em operações importantes.
+* Não foram encontrados gargalos relacionados a imagens, uma vez que a aplicação não utiliza recursos visuais desse tipo.
 
 ### Relatório Antes das Otimizações
 
@@ -49,6 +50,9 @@ Exemplo:
 * Adicionado favicon da aplicação.
 * Utilização do atributo defer no carregamento do arquivo JavaScript.
 * Adição de labels
+
+* # Imagens
+O projeto não utiliza imagens em sua interface. Dessa forma, não foi necessária a aplicação de técnicas de compressão, conversão para WebP/AVIF ou carregamento lazy loading.
 
 ### CSS
 
