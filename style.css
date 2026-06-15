@@ -37,14 +37,11 @@ button{
 }
 
 button{
-    background:#2196f3;
+    background:#043d77;
     color:white;
     border:none;
     cursor:pointer;
-}
-
-button:hover{
-    opacity:0.9;
+    transition:opacity .2s;
 }
 
 ul{
@@ -62,14 +59,6 @@ li{
 .remover{
     background:red;
     margin-top:10px;
-}
-
-@media(max-width:600px){
-
-    .container{
-        width:100%;
-    }
-
 }
 
 #installBtn {

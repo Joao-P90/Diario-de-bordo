@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aplicativo Diário de Bordo para registro de atividades e anotações diárias.">
+    <meta name="theme-color" content="#2196f3">
 
     <title>Diário de Bordo</title>
+
+    <link rel="icon" href="icons/icon-192.png">
 
     <link rel="stylesheet" href="style.css">
 
@@ -20,14 +24,15 @@
 
         <form id="formEntrada">
 
+            <label for="titulo">Título</label>
             <input type="text" id="titulo" placeholder="Título" required>
 
+            <label for="descricao">Descrição</label>
             <textarea id="descricao" placeholder="Descrição" required></textarea>
 
+            <label for="data">Data</label>
             <input type="date" id="data" required>
-
-            <button type="submit">Adicionar</button>
-
+            
         </form>
 
         <button id="installBtn" hidden>Instalar Aplicativo</button>
@@ -38,7 +43,6 @@
 
     </div>
 
-    <script src="script.js"></script>
-
+    <script src="script.js" defer></script>
 </body>
 </html>

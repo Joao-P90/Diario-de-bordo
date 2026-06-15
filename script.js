@@ -1,9 +1,16 @@
 const form = document.getElementById("formEntrada");
 const lista = document.getElementById("listaEntradas");
 
+const tituloInput = document.getElementById("titulo");
+const descricaoInput = document.getElementById("descricao");
+const dataInput = document.getElementById("data");
+
+const installBtn = document.getElementById("installBtn");
+
 let entradas =
     JSON.parse(localStorage.getItem("entradas")) || [];
 
+/* Salva os dados no LocalStorage */
 function salvarLocalStorage() {
     localStorage.setItem(
         "entradas",
@@ -11,41 +18,39 @@ function salvarLocalStorage() {
     );
 }
 
+/* Renderiza a lista de entradas */
 function renderizarEntradas() {
 
-    lista.innerHTML = "";
+    let html = "";
 
     entradas.forEach((entrada, index) => {
 
-        const li = document.createElement("li");
-
-        li.innerHTML = `
-            <h3>${entrada.titulo}</h3>
-            <p>${entrada.descricao}</p>
-            <small>${entrada.data}</small>
-            <br>
-            <button class="remover"
-                onclick="removerEntrada(${index})">
-                Remover
-            </button>
+        html += `
+            <li>
+                <h3>${entrada.titulo}</h3>
+                <p>${entrada.descricao}</p>
+                <small>${entrada.data}</small>
+                <br>
+                <button
+                    class="remover"
+                    onclick="removerEntrada(${index})">
+                    Remover
+                </button>
+            </li>
         `;
-
-        lista.appendChild(li);
     });
+
+    lista.innerHTML = html;
 }
 
+/* Adiciona nova entrada */
 form.addEventListener("submit", (e) => {
 
     e.preventDefault();
 
-    const titulo =
-        document.getElementById("titulo").value;
-
-    const descricao =
-        document.getElementById("descricao").value;
-
-    const data =
-        document.getElementById("data").value;
+    const titulo = tituloInput.value;
+    const descricao = descricaoInput.value;
+    const data = dataInput.value;
 
     entradas.push({
         titulo,
@@ -59,33 +64,41 @@ form.addEventListener("submit", (e) => {
     form.reset();
 });
 
-function removerEntrada(index){
+/* Remove entrada */
+function removerEntrada(index) {
 
-    entradas.splice(index,1);
+    entradas.splice(index, 1);
 
     salvarLocalStorage();
 
     renderizarEntradas();
 }
 
+/* Renderização inicial */
 renderizarEntradas();
 
+/* Registro do Service Worker */
 if ("serviceWorker" in navigator) {
 
     window.addEventListener("load", () => {
 
-        navigator.serviceWorker.register(
-            "./service-worker.js"
-        );
+        navigator.serviceWorker
+            .register("./service-worker.js")
+            .catch((erro) => {
+
+                console.error(
+                    "Erro ao registrar Service Worker:",
+                    erro
+                );
+
+            });
 
     });
 
 }
 
+/* Instalação do PWA */
 let deferredPrompt;
-
-const installBtn =
-    document.getElementById("installBtn");
 
 window.addEventListener(
     "beforeinstallprompt",
@@ -100,14 +113,19 @@ window.addEventListener(
     }
 );
 
-installBtn.addEventListener("click", async () => {
+installBtn.addEventListener(
+    "click",
+    async () => {
 
-    installBtn.hidden = true;
+        if (!deferredPrompt) return;
 
-    deferredPrompt.prompt();
+        installBtn.hidden = true;
 
-    await deferredPrompt.userChoice;
+        deferredPrompt.prompt();
 
-    deferredPrompt = null;
+        await deferredPrompt.userChoice;
 
-});
+        deferredPrompt = null;
+
+    }
+);
