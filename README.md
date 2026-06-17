@@ -100,6 +100,29 @@ Exemplo:
 | Best Practices | 100   |  100   |
 | SEO            | 90    |  100   |
 
+|First Contentful Paint (FCP)  | 0,3 s |  0,2 s |
+|Largest Contentful Paint (LCP)| 0,3 s |  0,3 s |
+|Total Blocking Time           | 0 ms  |  0 ms  |
+|Speed index                   | 0,3 s |  0,2 s |
+
+Mesmo com a pontuação de Performance já em seu valor máximo, observou-se uma pequena melhoria nos tempos de carregamento após as otimizações realizadas.
+
+## Análise da Métrica de Performance
+
+Durante a avaliação inicial utilizando o Lighthouse, a aplicação já apresentou pontuação máxima (100) na categoria Performance. Isso ocorreu porque o projeto possui estrutura simples, sem utilização de bibliotecas pesadas, imagens de grande porte, vídeos, fontes externas ou requisições de rede complexas.
+
+Mesmo mantendo a pontuação 100 após as otimizações, foram realizadas melhorias importantes relacionadas à eficiência do código e às boas práticas de desenvolvimento, incluindo:
+
+* Utilização do atributo `defer` para carregamento do JavaScript.
+* Redução de consultas repetidas ao DOM.
+* Otimização da renderização dinâmica da lista de entradas.
+* Revisão do Service Worker e da estratégia de cache.
+* Remoção de código redundante.
+* Melhoria da estrutura semântica do HTML.
+
+Dessa forma, embora a nota geral de Performance tenha permanecido em seu valor máximo, as otimizações contribuíram para tornar o código mais eficiente, organizado e alinhado às boas práticas recomendadas para aplicações web modernas.
+
+
 ## Melhorias com Maior Impacto
 
 As alterações que mais contribuíram para a melhoria da aplicação foram:
