@@ -100,6 +100,8 @@ Exemplo:
 | Best Practices | 100   |  100   |
 | SEO            | 90    |  100   |
 
+|Evidências específicas        | Antes | Depois |
+| ---------------------------- | ----- | ------ |
 |First Contentful Paint (FCP)  | 0,3 s |  0,2 s |
 |Largest Contentful Paint (LCP)| 0,3 s |  0,3 s |
 |Total Blocking Time           | 0 ms  |  0 ms  |
